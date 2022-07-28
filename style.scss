@@ -1,0 +1,31 @@
+html, body{
+    height: 100%;
+    width: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.boxes__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height:100vh;
+
+    margin:auto;
+
+    &--children {
+        width: 100px;
+        height: 100px;
+        border: 2px solid black;
+    }
+
+}
+
+.black{
+    background-color: black;
+}
