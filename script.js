@@ -1,13 +1,24 @@
-function generateBox(pixels) {
+function generateBox(num) {
+
+    pixels = num * num;
 
     for (let i = 0; i < pixels; i++) {
         let box = document.createElement('div');
         box.classList.add('boxes__container--children');
+        
 
-        boxesContainer.appendChild(box);
+        // sets dimensions
+        let boxesContainerHeight = boxesContainer.offsetHeight;
+        let boxesContainerWidth = boxesContainer.offsetWidth;
+
+        box.style.width = `${boxesContainerWidth/num}px`;
+        box.style.height = `${boxesContainerHeight/num}px`;
 
         //adds click event listener
         box.addEventListener('click', paint);
+
+        boxesContainer.appendChild(box);
+
     }
 
 }
@@ -21,7 +32,10 @@ function paint() {
 
 let boxesContainer = document.querySelector('.boxes__container');
 
-generateBox(2);
+generateBox(4);
+
+
+
 
 
 
