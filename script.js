@@ -29,10 +29,19 @@ function paint() {
     this.classList.add('black');
 }
 
+function erase(){
+    this.classList.add('white');
+    console.log("Does not work");
+}
+
 
 let boxesContainer = document.querySelector('.boxes__container');
 
-generateBox(4);
+// Settings
+let eraseButton = document.querySelector('.erase_button');
+eraseButton.addEventListener('click', erase);
+
+generateBox(16);
 
 
 

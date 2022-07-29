@@ -5,6 +5,25 @@ html, body{
 
 body{
     display: flex;
+    flex-direction: column;
+}
+
+h1{
+    text-align: center;
+}
+
+.body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    height: 100%;
+
+    &>*{
+
+        // margin-right: 2em;
+    }
 }
 
 * {
@@ -13,26 +32,68 @@ body{
     box-sizing: border-box;
 }
 
-.boxes__container {
-    display: flex;
-    align-items: center;
-    align-content: center;
+.wrapper__settings{
+    width: 15%;
+    display:flex;
+
     justify-content: center;
-    flex-wrap: wrap;
 
-    height:20em;
-    width: 20em;
+    .settings{
+        display: flex;
+        flex-direction: column;
 
-    margin:auto;
+        text-align: center;
 
-    &--children {
-        // width: 1em;
-        // height: 1em;
-        border: 2px solid black;
+        gap: 1em;
+
+        input{
+            margin-top: -1em;
+        }
+
     }
+    
 
+}
+
+.wrapper__boxes{
+
+    width: 50%;
+
+    .boxes__container {
+        display: flex;
+        // position: absolute;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    
+        height:20em;
+        width: 20em;
+    
+        margin: 0 auto;
+    
+        // border: 1px solid black;
+    
+        &--children {
+            padding: 0;
+            margin: 0;
+            border: 1px solid black;
+        }
+    
+    
+    }
+}
+
+
+
+.wrapper__blank{
+width: 15%;
 }
 
 .black{
     background-color: black;
+}
+
+.white{
+    background-color: white;
 }

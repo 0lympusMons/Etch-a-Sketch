@@ -5,15 +5,44 @@ html, body {
 
 body {
   display: flex;
+  flex-direction: column;
 }
 
+h1 {
+  text-align: center;
+}
+
+.body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.boxes__container {
+.wrapper__settings {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+}
+.wrapper__settings .settings {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 1em;
+}
+.wrapper__settings .settings input {
+  margin-top: -1em;
+}
+
+.wrapper__boxes {
+  width: 50%;
+}
+.wrapper__boxes .boxes__container {
   display: flex;
   align-items: center;
   align-content: center;
@@ -21,12 +50,22 @@ body {
   flex-wrap: wrap;
   height: 20em;
   width: 20em;
-  margin: auto;
+  margin: 0 auto;
 }
-.boxes__container--children {
-  border: 2px solid black;
+.wrapper__boxes .boxes__container--children {
+  padding: 0;
+  margin: 0;
+  border: 1px solid black;
+}
+
+.wrapper__blank {
+  width: 15%;
 }
 
 .black {
   background-color: black;
+}
+
+.white {
+  background-color: white;
 }/*# sourceMappingURL=style.css.map */
