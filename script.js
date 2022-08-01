@@ -14,44 +14,41 @@ function generateBox(num) {
         box.style.width = `${boxesContainerWidth / num}px`;
         box.style.height = `${boxesContainerHeight / num}px`;
 
-        //adds click event listener
-        box.addEventListener('click', brush);
-
         boxesContainer.appendChild(box);
 
     }
 
 }
 
-
-function paint() {
-    
-
-}
-
-function brush(){
+function brush() {
     let allBoxes = document.querySelectorAll('.boxes__container--children');
-    allBoxes.forEach(box => box.addEventListener('click', () => box.classList.add('black')));
+    allBoxes.forEach(box => box.removeEventListener('click', removeBlack));
+
+    allBoxes.forEach(box => box.addEventListener('click', addBlack));
 }
 
 
 function erase() {
 
-    if (eraseButtonActivated === true) {
-        let allBoxes = document.querySelectorAll('.boxes__container--children');
-        allBoxes.forEach(box => box.addEventListener('click', () => box.classList.add('white')));
-    }
 
-    if (eraseButtonActivated === false) {
-        eraseButtonActivated = true;
-    } else if (eraseButtonActivated === true) {
-        eraseButtonActivated = false;
-    }
+    let allBoxes = document.querySelectorAll('.boxes__container--children');
 
+    allBoxes.forEach(box => box.removeEventListener('click', addBlack));
 
+    allBoxes.forEach(box => box.addEventListener('click', removeBlack));
 
-    return eraseButtonActivated;
+}
 
+function addBlack() {
+    this.classList.remove('white');
+    this.classList.add('black');
+    // console.log(this);
+}
+
+function removeBlack() {
+    this.classList.remove('black');
+    this.classList.add('white');
+    console.log(this);
 
 }
 
@@ -69,7 +66,9 @@ eraseButton.addEventListener('click', erase);
 let clearButton = document.querySelector('.clear_button');
 clearButton.addEventListener('click', generateBox);
 
-generateBox(16);
+// Settings ends here
+
+generateBox(2);
 
 
 
