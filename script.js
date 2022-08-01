@@ -42,13 +42,31 @@ function erase() {
 function addBlack() {
     this.classList.remove('white');
     this.classList.add('black');
-    // console.log(this);
+
 }
 
 function removeBlack() {
     this.classList.remove('black');
     this.classList.add('white');
-    console.log(this);
+
+
+}
+
+function submit(e){
+
+
+
+if(e.key==='Enter'){
+
+    let allBoxes = document.querySelectorAll('.boxes__container--children');
+    allBoxes.forEach(box => box.remove());
+    
+    pixels = e.target.value;
+    generateBox(pixels);
+}
+//add reset function here to delete old divs
+
+
 
 }
 
@@ -66,9 +84,12 @@ eraseButton.addEventListener('click', erase);
 let clearButton = document.querySelector('.clear_button');
 clearButton.addEventListener('click', generateBox);
 
+let pixels = 2;
+let input = document.querySelector('.input');
+input.addEventListener('keypress',submit)
+
 // Settings ends here
 
-generateBox(2);
 
 
 
