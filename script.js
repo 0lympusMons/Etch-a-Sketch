@@ -52,26 +52,29 @@ function removeBlack() {
 
 }
 
-function submit(e){
+function submit(e) {
 
+    if (e.key === 'Enter') {
 
+        let allBoxes = document.querySelectorAll('.boxes__container--children');
+        allBoxes.forEach(box => box.remove());
 
-if(e.key==='Enter'){
+        pixels = e.target.value;
+        generateBox(pixels);
+    }
 
-    let allBoxes = document.querySelectorAll('.boxes__container--children');
-    allBoxes.forEach(box => box.remove());
-    
-    pixels = e.target.value;
-    generateBox(pixels);
 }
-//add reset function here to delete old divs
 
-
-
+function clear(){
+    let allBoxes = document.querySelectorAll('.boxes__container--children');
+    allBoxes.forEach(box => box.classList.add('white'));
 }
 
 
 let boxesContainer = document.querySelector('.boxes__container');
+
+let allBoxes = document.querySelectorAll('.boxes__container--children');
+
 
 // Settings
 let brushButton = document.querySelector('.brush_button');
@@ -82,11 +85,11 @@ let eraseButtonActivated = false;
 eraseButton.addEventListener('click', erase);
 
 let clearButton = document.querySelector('.clear_button');
-clearButton.addEventListener('click', generateBox);
+clearButton.addEventListener('click', clear);
 
 let pixels = 2;
 let input = document.querySelector('.input');
-input.addEventListener('keypress',submit)
+input.addEventListener('keypress', submit);
 
 // Settings ends here
 
