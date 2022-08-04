@@ -70,6 +70,7 @@ function addBlack() {
     console.log('mouseIsDown is ' + mouseIsDown);
 
     if (mouseIsDown) {
+        this.style.background = '';
         this.classList.remove('white');
         this.classList.add('black');
     }
@@ -77,6 +78,7 @@ function addBlack() {
 }
 
 function addBlackClick() {
+    this.style.background = '';
     this.classList.remove('white');
     this.classList.add('black');
 }
@@ -86,6 +88,7 @@ function removeBlack() {
     console.log('mouseIsDown is ' + mouseIsDown);
 
     if (mouseIsDown) {
+    this.style.background = '';
         this.classList.remove('black');
         this.classList.add('white');
     }
@@ -93,6 +96,7 @@ function removeBlack() {
 }
 
 function removeBlackClick() {
+    this.style.background = '';
     this.classList.remove('black');
     this.classList.add('white');
 }
