@@ -32,11 +32,15 @@ function brush() {
 
     let allBoxes = document.querySelectorAll('.boxes__container--children');
 
+    allBoxes.forEach(box => box.removeEventListener('mouseover', randomColors));
+
     allBoxes.forEach(box => box.removeEventListener('mouseover', removeBlack));
     allBoxes.forEach(box => box.addEventListener('mouseover', addBlack));
 
     allBoxes.forEach(box => box.removeEventListener('mousedown', removeBlack));
     allBoxes.forEach(box => box.addEventListener('mousedown', addBlackClick));
+
+
 }
 
 
@@ -45,6 +49,8 @@ function erase() {
 
 
     let allBoxes = document.querySelectorAll('.boxes__container--children');
+
+    allBoxes.forEach(box => box.removeEventListener('mouseover', randomColors));
 
     allBoxes.forEach(box => box.removeEventListener('mouseover', addBlack));
     allBoxes.forEach(box => box.addEventListener('mouseover', removeBlack));
