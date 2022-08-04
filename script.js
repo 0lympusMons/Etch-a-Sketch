@@ -25,6 +25,9 @@ function generateBox(num) {
 
 }
 
+
+// STARTS brush and erase
+
 function brush() {
 
     let allBoxes = document.querySelectorAll('.boxes__container--children');
@@ -51,42 +54,45 @@ function erase() {
 
 }
 
+// ENDS brush and erase
+
+
+
+// STARTS addBlack, removeBlack, and their click variants
 function addBlack() {
 
-        console.log('mouseIsDown is '+ mouseIsDown);
+    console.log('mouseIsDown is ' + mouseIsDown);
 
-        if(mouseIsDown){
-            this.classList.remove('white');
-            this.classList.add('black');
-        }
-
-
-
+    if (mouseIsDown) {
+        this.classList.remove('white');
+        this.classList.add('black');
+    }
 
 }
 
-function addBlackClick(){
+function addBlackClick() {
     this.classList.remove('white');
     this.classList.add('black');
-} 
+}
 
 
 function removeBlack() {
-    console.log('mouseIsDown is '+ mouseIsDown);
+    console.log('mouseIsDown is ' + mouseIsDown);
 
-    if(mouseIsDown){
+    if (mouseIsDown) {
         this.classList.remove('black');
         this.classList.add('white');
     }
 
-
-
 }
 
-function removeBlackClick(){
+function removeBlackClick() {
     this.classList.remove('black');
     this.classList.add('white');
-} 
+}
+
+// ENDS addBlack, removeBlack, and their click variants
+
 
 function submit(e) {
 
@@ -109,9 +115,6 @@ function clear() {
 }
 
 
-let boxesContainer = document.querySelector('.boxes__container');
-
-let allBoxes = document.querySelectorAll('.boxes__container--children');
 
 //STARTS mouse event listener(s)
 
