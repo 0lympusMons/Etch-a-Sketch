@@ -14,18 +14,28 @@ function generateBox(num) {
         box.style.width = `${boxesContainerWidth / num}px`;
         box.style.height = `${boxesContainerHeight / num}px`;
 
+        box.setAttribute('draggable', 'false');
+
+
+
         boxesContainer.appendChild(box);
+
 
     }
 
 }
 
 function brush() {
-    let allBoxes = document.querySelectorAll('.boxes__container--children');
-    allBoxes.forEach(box => box.removeEventListener('click', removeBlack));
 
-    allBoxes.forEach(box => box.addEventListener('click', addBlack));
+    let allBoxes = document.querySelectorAll('.boxes__container--children');
+
+    allBoxes.forEach(box => box.removeEventListener('mouseover', removeBlack));
+    allBoxes.forEach(box => box.addEventListener('mouseover', addBlack));
+
+    allBoxes.forEach(box => box.removeEventListener('mousedown', removeBlack));
+    allBoxes.forEach(box => box.addEventListener('mousedown', addBlackClick));
 }
+
 
 
 function erase() {
@@ -33,24 +43,50 @@ function erase() {
 
     let allBoxes = document.querySelectorAll('.boxes__container--children');
 
-    allBoxes.forEach(box => box.removeEventListener('click', addBlack));
+    allBoxes.forEach(box => box.removeEventListener('mouseover', addBlack));
+    allBoxes.forEach(box => box.addEventListener('mouseover', removeBlack));
 
-    allBoxes.forEach(box => box.addEventListener('click', removeBlack));
+    allBoxes.forEach(box => box.removeEventListener('mousedown', addBlackClick));
+    allBoxes.forEach(box => box.addEventListener('mousedown', removeBlackClick));
 
 }
 
 function addBlack() {
+
+        console.log('mouseIsDown is '+ mouseIsDown);
+
+        if(mouseIsDown){
+            this.classList.remove('white');
+            this.classList.add('black');
+        }
+
+
+
+
+}
+
+function addBlackClick(){
     this.classList.remove('white');
     this.classList.add('black');
+} 
 
-}
 
 function removeBlack() {
-    this.classList.remove('black');
-    this.classList.add('white');
+    console.log('mouseIsDown is '+ mouseIsDown);
+
+    if(mouseIsDown){
+        this.classList.remove('black');
+        this.classList.add('white');
+    }
+
 
 
 }
+
+function removeBlackClick(){
+    this.classList.remove('black');
+    this.classList.add('white');
+} 
 
 function submit(e) {
 
@@ -65,8 +101,10 @@ function submit(e) {
 
 }
 
-function clear(){
+function clear() {
     let allBoxes = document.querySelectorAll('.boxes__container--children');
+    allBoxes.forEach(box => box.classList.remove('black'));
+
     allBoxes.forEach(box => box.classList.add('white'));
 }
 
@@ -75,17 +113,42 @@ let boxesContainer = document.querySelector('.boxes__container');
 
 let allBoxes = document.querySelectorAll('.boxes__container--children');
 
+//STARTS mouse event listener(s)
+
+document.addEventListener('mousedown', truthify);
+document.addEventListener('mouseup', falsify);
+
+let mouseIsDown = false;
+
+function truthify() {
+    mouseIsDown = true;
+    console.log(mouseIsDown);
+}
+
+function falsify() {
+    mouseIsDown = false;
+    console.log(mouseIsDown);
+
+}
+
+
+
+// ENDS mouse event listener(s) 
+
 
 // Settings
 let brushButton = document.querySelector('.brush_button');
 brushButton.addEventListener('click', brush);
 
+
 let eraseButton = document.querySelector('.erase_button');
 let eraseButtonActivated = false;
 eraseButton.addEventListener('click', erase);
 
+
 let clearButton = document.querySelector('.clear_button');
 clearButton.addEventListener('click', clear);
+
 
 let pixels = 2;
 let input = document.querySelector('.input');
