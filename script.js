@@ -110,11 +110,39 @@ function submit(e) {
 function clear() {
     let allBoxes = document.querySelectorAll('.boxes__container--children');
     allBoxes.forEach(box => box.classList.remove('black'));
+    allBoxes.forEach(box => box.style.backgroundColor = 'white');
 
     allBoxes.forEach(box => box.classList.add('white'));
 }
 
+function rainbow() {
+    let allBoxes = document.querySelectorAll('.boxes__container--children');
 
+    allBoxes.forEach(box => box.removeEventListener('mouseover', removeBlack));
+    allBoxes.forEach(box => box.removeEventListener('mouseover', addBlack));
+
+    allBoxes.forEach(box => box.addEventListener('mouseover', randomColors));
+
+}
+
+
+
+function randomColors() {
+
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    console.log(randomColor);
+
+    if (mouseIsDown) {
+        this.classList.remove('white');
+        this.style.backgroundColor = "#" + randomColor;;
+    }
+
+}
+
+//*****************************************************************************
+
+let boxesContainer = document.querySelector('.boxes__container');
+let allBoxes = document.querySelectorAll('.boxes__container--children');
 
 //STARTS mouse event listener(s)
 
@@ -139,6 +167,7 @@ function falsify() {
 // ENDS mouse event listener(s) 
 
 
+
 // Settings
 let brushButton = document.querySelector('.brush_button');
 brushButton.addEventListener('click', brush);
@@ -156,6 +185,9 @@ clearButton.addEventListener('click', clear);
 let pixels = 2;
 let input = document.querySelector('.input');
 input.addEventListener('keypress', submit);
+
+let rainbowButton = document.querySelector('.rainbow_button');
+rainbowButton.addEventListener('click', rainbow);
 
 // Settings ends here
 
